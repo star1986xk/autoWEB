@@ -16,7 +16,7 @@ class DianXiaoMi():
         exampleInputName = self.wait.until(EC.presence_of_element_located((By.ID, "exampleInputName")))
         exampleInputName.send_keys('caohongjing123')
         exampleInputPassword = self.wait.until(EC.presence_of_element_located((By.ID, "exampleInputPassword")))
-        exampleInputPassword.send_keys('Caohongjing332')
+        exampleInputPassword.send_keys('Caohongjing334')
 
     # 关闭3个弹窗
     def close3(self):
@@ -32,7 +32,7 @@ class DianXiaoMi():
             close_btn.click()
         except Exception as e:
             print(e)
-        time.sleep(2)
+        time.sleep(3)
         try:
             self.driver.execute_script("setUserMessageNoShowDays('597666', 0);")
         except Exception as e:
@@ -43,21 +43,21 @@ class DianXiaoMi():
             close_btn.click()
         except Exception as e:
             print(e)
-        time.sleep(2)
+        time.sleep(3)
         try:
             close_btn = self.wait.until(EC.presence_of_element_located(
                 (By.XPATH, '//div[@id="theNewestModalLabel"]//div[@class="modal-footer"]/button')))
             close_btn.click()
         except Exception as e:
             print(e)
-        time.sleep(2)
+        time.sleep(3)
         try:
             close_btn = self.wait.until(EC.presence_of_element_located(
                 (By.XPATH, '//div[@id="theNewestModalLabel"]//div[@class="modal-footer"]/button')))
             close_btn.click()
         except Exception as e:
             print(e)
-        time.sleep(2)
+        time.sleep(3)
 
     def getTime(self):
         t = requests.get('http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp').json()['data']['t']
@@ -73,14 +73,14 @@ class DianXiaoMi():
             self.log.logger.info('订单处理')
         except Exception as e:
             self.log.logger.warning('订单处理')
-        time.sleep(2)
+        time.sleep(3)
         # 点同步订单按钮
         try:
             self.driver.execute_script("return syncOrder();")
             self.log.logger.info('同步订单')
         except Exception as e:
             self.log.logger.warning('同步订单')
-        # 等待15分钟
+        # 等待20分钟
         time.sleep(60*20)
         # 点关闭按钮
         try:
@@ -90,7 +90,7 @@ class DianXiaoMi():
             self.log.logger.info('同步订单关闭')
         except Exception as e:
             self.log.logger.warning('同步订单关闭')
-        time.sleep(2)
+        time.sleep(3)
         # 点待处理按钮
         try:
             daichuli = self.wait.until(EC.presence_of_element_located((By.ID, 'm101')))
@@ -98,14 +98,14 @@ class DianXiaoMi():
             self.log.logger.info('待处理')
         except Exception as e:
             self.log.logger.warning('待处理')
-        time.sleep(2)
+        time.sleep(3)
         #点可合并
         try:
             self.driver.execute_script("return getMergeOrderList(1,this);")
             self.log.logger.info('可合并')
         except Exception as e:
             self.log.logger.warning('可合并')
-        time.sleep(2)
+        time.sleep(3)
         # 点下拉300条按钮
         try:
             xuanxiang = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[@id="dxmBody"]//select[@name="pageselct"]')))
@@ -113,7 +113,7 @@ class DianXiaoMi():
             self.log.logger.info('可合并-300条')
         except Exception as e:
             self.log.logger.warning('可合并-300条')
-        time.sleep(2)
+        time.sleep(3)
         # 点全选按钮
         try:
             quanxuan = self.wait.until(EC.presence_of_element_located((By.XPATH, '//table[@id="orderListTable"]//th/input')))
@@ -121,14 +121,14 @@ class DianXiaoMi():
             self.log.logger.info('可合并-全选')
         except Exception as e:
             self.log.logger.warning('可合并-全选')
-        time.sleep(2)
+        time.sleep(3)
         # 批量合并
         try:
             self.driver.execute_script('return batchMerge();')
             self.log.logger.info('批量合并')
         except Exception as e:
             self.log.logger.warning('批量合并')
-        time.sleep(2)
+        time.sleep(3)
         # 批量合并-单选
         try:
             danxuan = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[@id="batchMergeConfigModal"]/div/div/div/div[2]//input')))
@@ -136,7 +136,7 @@ class DianXiaoMi():
             self.log.logger.info('批量合并-单选')
         except Exception as e:
             self.log.logger.warning('批量合并-单选')
-        time.sleep(2)
+        time.sleep(3)
         # 点弹窗确定按钮
         try:
             queding = self.wait.until(EC.presence_of_element_located(
@@ -153,7 +153,7 @@ class DianXiaoMi():
             self.log.logger.info('待处理')
         except Exception as e:
             self.log.logger.warning('待处理')
-        time.sleep(2)
+        time.sleep(3)
         # 点刷新规则按钮
         try:
             shuaxin = self.wait.until(EC.presence_of_element_located((By.XPATH, '//button[contains(text(), "刷新规则")]')))
@@ -161,7 +161,7 @@ class DianXiaoMi():
             self.log.logger.info('刷新规则')
         except Exception as e:
             self.log.logger.warning('刷新规则')
-        time.sleep(2)
+        time.sleep(3)
         # 选择单选框(待审核中)
         try:
             danxuan = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[@id="approvedOrderRefreshRule"]//tr[1]//input')))
@@ -169,7 +169,7 @@ class DianXiaoMi():
             self.log.logger.info('刷新规则-选择单选框')
         except Exception as e:
             self.log.logger.warning('刷新规则-选择单选框')
-        time.sleep(2)
+        time.sleep(3)
         # 点弹窗确定按钮
         try:
             queding = self.wait.until(EC.presence_of_element_located(
@@ -188,7 +188,7 @@ class DianXiaoMi():
         except Exception as e:
             print(e)
             pass
-        time.sleep(2)
+        time.sleep(3)
         # 点待处理按钮
         try:
             daichuli = self.wait.until(EC.presence_of_element_located((By.ID, 'm101')))
@@ -196,7 +196,7 @@ class DianXiaoMi():
             self.log.logger.info('待处理')
         except Exception as e:
             self.log.logger.warning('待处理')
-        time.sleep(2)
+        time.sleep(3)
         # 点全选按钮
         try:
             quanxuan = self.wait.until(EC.presence_of_element_located((By.XPATH, '//table[@id="orderListTable"]//th/input')))
@@ -204,25 +204,27 @@ class DianXiaoMi():
             self.log.logger.info('待处理-全选')
         except Exception as e:
             self.log.logger.warning('待处理-全选')
-        time.sleep(2)
+        time.sleep(3)
         # 点所有条目
         try:
-            self.driver.execute_script("return resultNumRange(this);")
+            quanxuan = self.wait.until(EC.presence_of_element_located((By.XPATH, '//tr[@id="showSelCheckboxNum"]/td/span/span/span//a')))
+            quanxuan.click()
+            # self.driver.execute_script("return resultNumRange(this);")
             self.log.logger.info('点所有条目')
         except Exception as e:
             self.log.logger.warning('点所有条目')
-        time.sleep(2)
+        time.sleep(3)
         # 点申请运单号按钮
         try:
             self.driver.execute_script('return batchMoveProcessed();')
             self.log.logger.info('申请运单号')
         except Exception as e:
             self.log.logger.warning('申请运单号')
-        time.sleep(2)
+        time.sleep(5)
         # 点弹窗关闭按钮
         try:
             guanbi = self.wait.until(EC.presence_of_element_located(
-                (By.XPATH, '//div[@id="batchOperateRetModal"]//button[contains(text(), "关闭")]')))
+                (By.XPATH, '//div[@id="batchOperateRetModal"]/div/div/div[3]/button')))
             guanbi.click()
             self.log.logger.info('申请运单号-关闭')
         except Exception as e:
@@ -271,7 +273,7 @@ class DianXiaoMi():
             self.log.logger.info('重新获得单号-关闭')
         except Exception as e:
             self.log.logger.warning('重新获得单号-关闭')
-        time.sleep(2)
+        time.sleep(3)
         # 再来一次
         # 点申请失败按钮
         try:
@@ -281,7 +283,7 @@ class DianXiaoMi():
             self.log.logger.info('申请失败')
         except Exception as e:
             self.log.logger.warning('申请失败')
-        time.sleep(2)
+        time.sleep(3)
         # 点重新获得单号按钮
         try:
             self.driver.execute_script("return batchReApplyTrackNum(0);")
@@ -298,7 +300,7 @@ class DianXiaoMi():
             self.log.logger.info('重新获得单号-关闭')
         except Exception as e:
             self.log.logger.warning('重新获得单号-关闭')
-        time.sleep(2)
+        time.sleep(3)
         # 点申请成功按钮
         try:
             chenggong = self.wait.until(
@@ -307,7 +309,7 @@ class DianXiaoMi():
             self.log.logger.info('申请成功')
         except Exception as e:
             self.log.logger.warning('申请成功')
-        time.sleep(2)
+        time.sleep(3)
         # 点下拉300条按钮
         try:
             xuanxiang = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[@id="dxmBody"]//select[@name="pageselct"]')))
@@ -315,7 +317,7 @@ class DianXiaoMi():
             self.log.logger.info('下拉-300条')
         except Exception as e:
             self.log.logger.warning('下拉-300条')
-        time.sleep(2)
+        time.sleep(3)
         # 点全选按钮
         try:
             quanxuan = self.wait.until(EC.presence_of_element_located((By.XPATH, '//table[@id="orderListTable"]//th/input')))
@@ -323,14 +325,14 @@ class DianXiaoMi():
             self.log.logger.info('申请成功-全选')
         except Exception as e:
             self.log.logger.warning('申请成功-全选')
-        time.sleep(2)
+        time.sleep(3)
         # 点虚拟发货按钮
         try:
             self.driver.execute_script("return batchCommitPlatform();")
             self.log.logger.info('虚拟发货')
         except Exception as e:
             self.log.logger.warning('虚拟发货')
-        time.sleep(2)
+        time.sleep(3)
         # 点确定按钮
         try:
             queding = self.wait.until(EC.presence_of_element_located((By.ID, 'dialog_btn_enter')))
@@ -347,7 +349,7 @@ class DianXiaoMi():
             self.log.logger.info('虚拟发货-关闭')
         except Exception as e:
             self.log.logger.warning('虚拟发货-关闭')
-        time.sleep(2)
+        time.sleep(3)
         # 点全选按钮
         try:
             quanxuan = self.wait.until(EC.presence_of_element_located((By.XPATH, '//table[@id="orderListTable"]//th/input')))
@@ -355,7 +357,7 @@ class DianXiaoMi():
             self.log.logger.info('申请成功-全选')
         except Exception as e:
             self.log.logger.warning('申请成功-全选')
-        time.sleep(2)
+        time.sleep(3)
         # 点移入待打单按钮
         try:
             daida = self.wait.until(EC.presence_of_element_located(
@@ -364,7 +366,7 @@ class DianXiaoMi():
             self.log.logger.info('移入待打单')
         except Exception as e:
             self.log.logger.warning('移入待打单')
-        time.sleep(2)
+        time.sleep(3)
         # 点单选按钮
         try:
             danxuan = self.wait.until(EC.presence_of_element_located((By.XPATH, '//input[@id="fieldType1"]')))
@@ -372,7 +374,7 @@ class DianXiaoMi():
             self.log.logger.info('移入待打单-单选')
         except Exception as e:
             self.log.logger.warning('移入待打单-单选')
-        time.sleep(2)
+        time.sleep(3)
         # 点确定按钮
         try:
             queding = self.wait.until(EC.presence_of_element_located((By.ID, 'batchMoveAllocatedConfirmBtn')))
@@ -380,7 +382,7 @@ class DianXiaoMi():
             self.log.logger.info('移入待打单-确定')
         except Exception as e:
             self.log.logger.warning('移入待打单-确定')
-        time.sleep(2)
+        time.sleep(3)
 
 if __name__ == '__main__':
     OBJ = DianXiaoMi()
