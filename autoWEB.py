@@ -26,38 +26,40 @@ class DianXiaoMi():
             close_btn.click()
         except Exception as e:
             print(e)
+        time.sleep(1)
         try:
             close_btn = self.wait.until(
                 EC.presence_of_element_located((By.XPATH, '//div[@id="myModal"]//div[@class="modal-footer"]/button')))
             close_btn.click()
         except Exception as e:
             print(e)
-        time.sleep(3)
+        time.sleep(1)
         try:
             self.driver.execute_script("setUserMessageNoShowDays('597666', 0);")
         except Exception as e:
             print(e)
+        time.sleep(1)
         try:
             close_btn = self.wait.until(EC.presence_of_element_located(
                 (By.XPATH, '//div[@id="theNewestModalLabel"]//div[@class="modal-footer"]/button')))
             close_btn.click()
         except Exception as e:
             print(e)
-        time.sleep(3)
+        time.sleep(1)
         try:
             close_btn = self.wait.until(EC.presence_of_element_located(
                 (By.XPATH, '//div[@id="theNewestModalLabel"]//div[@class="modal-footer"]/button')))
             close_btn.click()
         except Exception as e:
             print(e)
-        time.sleep(3)
+        time.sleep(1)
         try:
             close_btn = self.wait.until(EC.presence_of_element_located(
                 (By.XPATH, '//div[@id="theNewestModalLabel"]//div[@class="modal-footer"]/button')))
             close_btn.click()
         except Exception as e:
             print(e)
-        time.sleep(3)
+        time.sleep(1)
 
     def getTime(self):
         t = requests.get('http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp').json()['data']['t']
@@ -231,7 +233,7 @@ class DianXiaoMi():
             self.log.logger.warning('申请运单号-关闭')
         time.sleep(60*10)
 
-    def run2(self):
+    def run2(self,chongdanhaoTime):
         # 点订单处理连接
         try:
             tabOrder = self.wait.until(EC.presence_of_element_located((By.XPATH, '//li[@id="tabOrder"]/a')))
@@ -264,7 +266,7 @@ class DianXiaoMi():
         except Exception as e:
             self.log.logger.warning('重新获得单号')
         # 等待5分钟
-        time.sleep(60*5)
+        time.sleep(60*chongdanhaoTime)
         # 点弹窗关闭按钮
         try:
             guanbi = self.wait.until(EC.presence_of_element_located(
@@ -291,7 +293,7 @@ class DianXiaoMi():
         except Exception as e:
             self.log.logger.warning('重新获得单号')
         # 等待5分钟
-        time.sleep(60*5)
+        time.sleep(60*chongdanhaoTime)
         # 点弹窗关闭按钮
         try:
             guanbi = self.wait.until(EC.presence_of_element_located(
@@ -391,13 +393,13 @@ if __name__ == '__main__':
         nowTime = OBJ.getTime()
         if nowTime.tm_hour==7 and nowTime.tm_min==5:
             OBJ.run1()
-            OBJ.run2()
+            OBJ.run2(5)
         elif nowTime.tm_hour==20 and nowTime.tm_min==5:
             OBJ.run1()
-            OBJ.run2()
+            OBJ.run2(5)
         elif nowTime.tm_hour==23 and nowTime.tm_min==59:
             sec = (59-nowTime.tm_sec)
             time.sleep(sec)
-            OBJ.run2()
-        time.sleep(30)
+            OBJ.run2(15)
+        time.sleep(20)
         OBJ.driver.refresh()
