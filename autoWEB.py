@@ -628,7 +628,7 @@ if __name__ == '__main__':
     while True:
         OBJ.close3()
         nowTime = OBJ.getTime()
-        if nowTime.tm_hour == 22 and nowTime.tm_min == 20:
+        if nowTime.tm_hour == 1 and nowTime.tm_min == 5:
             OBJ.run1()
             OBJ.run2(5)
         elif nowTime.tm_hour == 7 and nowTime.tm_min == 5:
