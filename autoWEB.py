@@ -496,45 +496,60 @@ class DianXiaoMi():
     def run1(self):
         # 点订单处理连接
         self.dingdanchuli(0)
+        time.sleep(5)
         # 点同步订单按钮
         self.tongbudingdan(0)
         # 等待20分钟
         time.sleep(60 * 20)
         # 点关闭按钮
         self.tongbudingdan_guanbi(0)
+        time.sleep(5)
         # 点待处理按钮
         self.daichuli(0)
+        time.sleep(5)
         # 点可合并
         self.hebing(0)
+        time.sleep(5)
         # 点下拉300条按钮
         self.hebing300(0)
+        time.sleep(5)
         # 点全选按钮
         self.hebingquanxuan(0)
+        time.sleep(5)
         # 批量合并
         self.pilianghebing(0)
+        time.sleep(5)
         # 批量合并-单选
         self.pilianghebing_danxuan(0)
+        time.sleep(5)
         # 点弹窗确定按钮
         self.pilianghebing_queren(0)
         time.sleep(5)
         # 点待处理按钮
         self.daichuli(0)
+        time.sleep(5)
         # 点刷新规则按钮
         self.shuaxinguize(0)
+        time.sleep(5)
         # 刷新规则_单选框(待审核中)
         self.shuaxinguize_danxuan(0)
+        time.sleep(5)
         # 刷新规则_确定
         self.shuaxinguize_queding(0)
         # 等待15秒
         time.sleep(15)
         # 刷新规则_关闭
         self.shuaxinguize_guanbi(0)
+        time.sleep(5)
         # 点待处理按钮
         self.daichuli(0)
+        time.sleep(5)
         # 待处理300条
         self.daichuli_xiala(0)
+        time.sleep(5)
         # 点全选按钮
         self.daichuli_quanxuan(0)
+        time.sleep(5)
         # 点申请运单号按钮
         self.shenqingyundanhao(0)
         time.sleep(5)
@@ -558,7 +573,7 @@ class DianXiaoMi():
         time.sleep(60 * chongdanhaoTime)
         # 点弹窗关闭按钮
         self.conghuodanhao_guanbi(0)
-
+        time.sleep(1)
         # 点申请失败按钮
         self.shenqingshibai(0)
         time.sleep(1)
@@ -568,34 +583,44 @@ class DianXiaoMi():
         time.sleep(60 * chongdanhaoTime)
         # 点弹窗关闭按钮
         self.conghuodanhao_guanbi(0)
-
+        time.sleep(5)
         # 点申请成功按钮
         self.shenqingchenggong(0)
+        time.sleep(5)
         # 点下拉300条按钮
         self.shenqingchenggong_xiala(0)
+        time.sleep(5)
         # 点全选按钮
         self.shenqingchenggong_quanxuan(0)
+        time.sleep(5)
         # 点虚拟发货按钮
         self.xunifahuo(0)
+        time.sleep(5)
         # 点确定按钮
         self.xunifahuo_queding(0)
         # 等10分钟
         time.sleep(60 * 10)
         # 点关闭按钮
         self.tanchuang_guanbi(0)
+        time.sleep(5)
         # 点申请成功按钮
         self.shenqingchenggong(0)
+        time.sleep(5)
         # 点全选按钮
         self.shenqingchenggong_quanxuan(0)
+        time.sleep(5)
         # 点移入待打单按钮
         self.daidadan(0)
+        time.sleep(5)
         # 点单选按钮
         self.daidadan_danxuan(0)
+        time.sleep(5)
         # 点确定按钮
         self.daidadan_queding(0)
         time.sleep(10)
         # 点关闭按钮
         self.tanchuang_guanbi(0)
+        time.sleep(5)
 
 
 if __name__ == '__main__':
@@ -603,7 +628,7 @@ if __name__ == '__main__':
     while True:
         OBJ.close3()
         nowTime = OBJ.getTime()
-        if nowTime.tm_hour == 1 and nowTime.tm_min == 5:
+        if nowTime.tm_hour == 22 and nowTime.tm_min == 20:
             OBJ.run1()
             OBJ.run2(5)
         elif nowTime.tm_hour == 7 and nowTime.tm_min == 5:
