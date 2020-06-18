@@ -22,16 +22,7 @@ class DianXiaoMi():
     # 关闭3个弹窗
     def close3(self):
         try:
-            close_btn = self.wait.until(
-                EC.element_to_be_clickable((By.XPATH, '//div[@id="myModal"]//div[@class="modal-footer"]/button')))
-            close_btn.click()
-        except Exception as e:
-            print(e)
-        time.sleep(1)
-        try:
-            close_btn = self.wait.until(
-                EC.element_to_be_clickable((By.XPATH, '//div[@id="myModal"]//div[@class="modal-footer"]/button')))
-            close_btn.click()
+            self.driver.find_element_by_xpath('//div[@id="myModal"]//div[@class="modal-footer"]/button').click()
         except Exception as e:
             print(e)
         time.sleep(1)
@@ -41,23 +32,8 @@ class DianXiaoMi():
             print(e)
         time.sleep(1)
         try:
-            close_btn = self.wait.until(EC.element_to_be_clickable(
-                (By.XPATH, '//div[@id="theNewestModalLabel"]//div[@class="modal-footer"]/button')))
-            close_btn.click()
-        except Exception as e:
-            print(e)
-        time.sleep(1)
-        try:
-            close_btn = self.wait.until(EC.element_to_be_clickable(
-                (By.XPATH, '//div[@id="theNewestModalLabel"]//div[@class="modal-footer"]/button')))
-            close_btn.click()
-        except Exception as e:
-            print(e)
-        time.sleep(1)
-        try:
-            close_btn = self.wait.until(EC.element_to_be_clickable(
-                (By.XPATH, '//div[@id="theNewestModalLabel"]//div[@class="modal-footer"]/button')))
-            close_btn.click()
+            self.driver.find_element_by_xpath(
+                '//div[@id="theNewestModalLabel"]//div[@class="modal-footer"]/button').click()
         except Exception as e:
             print(e)
         time.sleep(1)
@@ -82,8 +58,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('订单处理')
 
-    #同步订单
-    def tongbudingdan(self,count):
+    # 同步订单
+    def tongbudingdan(self, count):
         if count < 3:
             try:
                 self.driver.execute_script("return syncOrder();")
@@ -95,8 +71,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('同步订单')
 
-    #同步订单关闭
-    def tongbudingdan_guanbi(self,count):
+    # 同步订单关闭
+    def tongbudingdan_guanbi(self, count):
         if count < 3:
             try:
                 guanbi = self.wait.until(EC.element_to_be_clickable(
@@ -110,8 +86,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('同步订单关闭')
 
-    #待处理
-    def daichuli(self,count):
+    # 待处理
+    def daichuli(self, count):
         if count < 3:
             try:
                 daichuli = self.wait.until(EC.element_to_be_clickable((By.ID, 'm101')))
@@ -124,8 +100,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('待处理')
 
-    #合并
-    def hebing(self,count):
+    # 合并
+    def hebing(self, count):
         if count < 3:
             try:
                 hebing = self.wait.until(
@@ -139,8 +115,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('可合并')
 
-    #合并300
-    def hebing300(self,count):
+    # 合并300
+    def hebing300(self, count):
         if count < 3:
             try:
                 xuanxiang = self.wait.until(
@@ -154,8 +130,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('可合并-300条')
 
-    #合并全选
-    def hebingquanxuan(self,count):
+    # 合并全选
+    def hebingquanxuan(self, count):
         if count < 3:
             try:
                 quanxuan = self.wait.until(
@@ -169,8 +145,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('可合并-全选')
 
-    #批量合并
-    def pilianghebing(self,count):
+    # 批量合并
+    def pilianghebing(self, count):
         if count < 3:
             try:
                 self.driver.execute_script('return batchMerge();')
@@ -182,8 +158,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('批量合并')
 
-    #批量合并-单选
-    def pilianghebing_danxuan(self,count):
+    # 批量合并-单选
+    def pilianghebing_danxuan(self, count):
         if count < 3:
             try:
                 danxuan = self.wait.until(EC.element_to_be_clickable(
@@ -197,8 +173,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('批量合并-单选')
 
-    #批量合并-确认
-    def pilianghebing_queren(self,count):
+    # 批量合并-确认
+    def pilianghebing_queren(self, count):
         if count < 3:
             try:
                 queding = self.wait.until(EC.element_to_be_clickable(
@@ -212,8 +188,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('批量合并-确定')
 
-    #刷新规则
-    def shuaxinguize(self,count):
+    # 刷新规则
+    def shuaxinguize(self, count):
         if count < 3:
             try:
                 shuaxin = self.wait.until(EC.element_to_be_clickable(
@@ -226,9 +202,9 @@ class DianXiaoMi():
                 self.shuaxinguize(count)
         else:
             self.log.logger.warning('刷新规则')
-    
-    #刷新规则单选
-    def shuaxinguize_danxuan(self,count):
+
+    # 刷新规则单选
+    def shuaxinguize_danxuan(self, count):
         if count < 3:
             try:
                 danxuan = self.wait.until(
@@ -242,8 +218,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('刷新规则-选择单选框')
 
-    #刷新规则确定
-    def shuaxinguize_queding(self,count):
+    # 刷新规则确定
+    def shuaxinguize_queding(self, count):
         if count < 3:
             try:
                 queding = self.wait.until(EC.element_to_be_clickable(
@@ -257,8 +233,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('刷新规则-确定')
 
-    #刷新规则关闭
-    def shuaxinguize_guanbi(self,count):
+    # 刷新规则关闭
+    def shuaxinguize_guanbi(self, count):
         if count < 3:
             try:
                 guanbi = self.wait.until(EC.element_to_be_clickable(
@@ -272,8 +248,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('刷新规则-关闭')
 
-    #待处理_下拉
-    def daichuli_xiala(self,count):
+    # 待处理_下拉
+    def daichuli_xiala(self, count):
         if count < 3:
             try:
                 xuanxiang = self.wait.until(
@@ -287,8 +263,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('待处理-300条')
 
-    #待处理_全选
-    def daichuli_quanxuan(self,count):
+    # 待处理_全选
+    def daichuli_quanxuan(self, count):
         if count < 3:
             try:
                 quanxuan = self.wait.until(
@@ -302,8 +278,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('待处理-全选')
 
-    #所有条目
-    def suoyoutiaomu(self,count):
+    # 所有条目
+    def suoyoutiaomu(self, count):
         if count < 3:
             try:
                 quanxuan = self.wait.until(
@@ -317,8 +293,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('点所有条目')
 
-    #申请运单号
-    def shenqingyundanhao(self,count):
+    # 申请运单号
+    def shenqingyundanhao(self, count):
         if count < 3:
             try:
                 self.driver.execute_script('return batchMoveProcessed();')
@@ -330,8 +306,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('申请运单号')
 
-    #弹窗_关闭
-    def tanchuang_guanbi(self,count):
+    # 弹窗_关闭
+    def tanchuang_guanbi(self, count):
         if count < 3:
             try:
                 guanbi = self.wait.until(EC.element_to_be_clickable(
@@ -345,8 +321,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('关闭窗口')
 
-    #自营仓库
-    def ziyingcangku(self,count):
+    # 自营仓库
+    def ziyingcangku(self, count):
         if count < 3:
             try:
                 ziying = self.wait.until(EC.element_to_be_clickable((By.ID, 'm10201')))
@@ -359,8 +335,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('自营仓库')
 
-    #申请失败
-    def shenqingshibai(self,count):
+    # 申请失败
+    def shenqingshibai(self, count):
         if count < 3:
             try:
                 shibai = self.wait.until(
@@ -374,8 +350,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('申请失败')
 
-    #重获订单号
-    def conghuodanhao(self,count):
+    # 重获订单号
+    def conghuodanhao(self, count):
         if count < 3:
             try:
                 self.driver.execute_script("return batchReApplyTrackNum(0);")
@@ -387,8 +363,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('重新获得订单号')
 
-    #重获订单号_关闭
-    def conghuodanhao_guanbi(self,count):
+    # 重获订单号_关闭
+    def conghuodanhao_guanbi(self, count):
         if count < 3:
             try:
                 guanbi = self.wait.until(EC.element_to_be_clickable(
@@ -402,8 +378,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('重新获得单号-关闭')
 
-    #申请成功
-    def shenqingchenggong(self,count):
+    # 申请成功
+    def shenqingchenggong(self, count):
         if count < 3:
             try:
                 chenggong = self.wait.until(
@@ -417,8 +393,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('申请成功')
 
-    #申请成功_下拉
-    def shenqingchenggong_xiala(self,count):
+    # 申请成功_下拉
+    def shenqingchenggong_xiala(self, count):
         if count < 3:
             try:
                 xuanxiang = self.wait.until(
@@ -432,8 +408,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('申请成功-下拉')
 
-    #申请成功_全选
-    def shenqingchenggong_quanxuan(self,count):
+    # 申请成功_全选
+    def shenqingchenggong_quanxuan(self, count):
         if count < 3:
             try:
                 quanxuan = self.wait.until(
@@ -447,8 +423,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('申请成功-全选')
 
-    #虚拟发货
-    def xunifahuo(self,count):
+    # 虚拟发货
+    def xunifahuo(self, count):
         if count < 3:
             try:
                 self.driver.execute_script("return batchCommitPlatform();")
@@ -460,8 +436,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('虚拟发货')
 
-    #虚拟发货_确定
-    def xunifahuo_queding(self,count):
+    # 虚拟发货_确定
+    def xunifahuo_queding(self, count):
         if count < 3:
             try:
                 queding = self.wait.until(EC.element_to_be_clickable((By.ID, 'dialog_btn_enter')))
@@ -474,8 +450,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('虚拟发货-确定')
 
-    #移入待打单
-    def daidadan(self,count):
+    # 移入待打单
+    def daidadan(self, count):
         if count < 3:
             try:
                 daida = self.wait.until(EC.element_to_be_clickable(
@@ -489,8 +465,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('移入待打单')
 
-    #待打单_单选
-    def daidadan_danxuan(self,count):
+    # 待打单_单选
+    def daidadan_danxuan(self, count):
         if count < 3:
             try:
                 danxuan = self.wait.until(EC.element_to_be_clickable((By.XPATH, '//input[@id="fieldType1"]')))
@@ -503,8 +479,8 @@ class DianXiaoMi():
         else:
             self.log.logger.warning('移入待打单-单选')
 
-    #待打单_确定
-    def daidadan_queding(self,count):
+    # 待打单_确定
+    def daidadan_queding(self, count):
         if count < 3:
             try:
                 queding = self.wait.until(EC.element_to_be_clickable((By.ID, 'batchMoveAllocatedConfirmBtn')))
@@ -523,7 +499,7 @@ class DianXiaoMi():
         # 点同步订单按钮
         self.tongbudingdan(0)
         # 等待20分钟
-        time.sleep(60*20)
+        time.sleep(60 * 20)
         # 点关闭按钮
         self.tongbudingdan_guanbi(0)
         # 点待处理按钮
@@ -621,6 +597,7 @@ class DianXiaoMi():
         # 点关闭按钮
         self.tanchuang_guanbi(0)
 
+
 if __name__ == '__main__':
     OBJ = DianXiaoMi()
     while True:
@@ -639,5 +616,5 @@ if __name__ == '__main__':
             sec = (55 - nowTime.tm_sec)
             time.sleep(sec)
             OBJ.run2(15)
-        time.sleep(20)
+        time.sleep(30)
         OBJ.driver.refresh()
