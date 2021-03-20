@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import requests
 from mylogclass import MyLogClass
@@ -10,7 +11,7 @@ from mylogclass import MyLogClass
 
 class DianXiaoMi():
     def __init__(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(r"./chromedriver.exe")
         self.wait = WebDriverWait(self.driver, 10)
         self.driver.get("https://www.dianxiaomi.com/index.htm")
         self.log = MyLogClass()
